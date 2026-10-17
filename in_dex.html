@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday.exe ♡</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+      :root {
+        --pink: #ff83ad;
+        --pink-dark: #e95791;
+        --lilac: #b6a0f8;
+        --cream: #fffaf7;
+        --plum: #55334d;
+        --muted: #a1849b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 25px 16px;
+        display: grid;
+        place-items: center;
+        overflow-x: hidden;
+        font-family: 'DM Sans', sans-serif;
+        color: var(--plum);
+        background:
+          radial-gradient(circle at 10% 15%, #ffe0ec 0 5%, transparent 5.5%),
+          radial-gradient(circle at 90% 80%, #e5dcff 0 8%, transparent 8.5%),
+          linear-gradient(135deg, #fff0f6, #f3edff 55%, #fff7e8);
+      }
+
+      .sparkle {
+        position: fixed;
+        color: #e96da2;
+        pointer-events: none;
+        animation: float 4s ease-in-out infinite;
+        font-size: 23px;
+      }
+      .s1 { top: 9%; left: 9%; }
+      .s2 { top: 16%; right: 10%; animation-delay: -1s; }
+      .s3 { bottom: 12%; left: 12%; animation-delay: -2s; }
+      .s4 { bottom: 9%; right: 9%; animation-delay: -3s; }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-12px) rotate(12deg); }
+      }
+
+      .window {
+        width: min(100%, 440px);
+        overflow: hidden;
+        background: rgba(255, 250, 253, .96);
+        border: 2px solid white;
+        border-radius: 27px;
+        box-shadow: 0 24px 70px #c88bb833, 0 5px 0 #f4c9df;
+        animation: appear .7s ease both;
+      }
+
+      @keyframes appear {
+        from { opacity: 0; transform: translateY(18px) scale(.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 15px 17px;
+        background: linear-gradient(90deg, #ffd8e8, #e9deff);
+        border-bottom: 1px solid #f1d7e6;
+        color: #79536f;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .dots {
+        display: flex;
+        gap: 5px;
+        margin-right: 7px;
+      }
+      .dots span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+      }
+      .dots span:nth-child(1) { background: #ff8eae; }
+      .dots span:nth-child(2) { background: #ffd078; }
+      .dots span:nth-child(3) { background: #92d9b4; }
+      .filename { margin-left: auto; letter-spacing: 0; }
+
+      .content { padding: 30px 26px 27px; }
+      .hidden { display: none !important; }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 7px 11px;
+        border-radius: 99px;
+        background: #ffe3ee;
+        color: #b53d75;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1.6px;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(34px, 9vw, 43px);
+        line-height: 1.04;
+        letter-spacing: -1.8px;
+        font-weight: 800;
+      }
+
+      .accent { color: var(--pink-dark); }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+      }
+
+      .ribbon {
+        display: grid;
+        place-items: center;
+        width: 65px;
+        height: 65px;
+        margin: 22px 0 2px;
+        border-radius: 21px;
+        background: linear-gradient(140deg, #ffd8e8, #ddd1ff);
+        box-shadow: 0 5px 0 #ebc3df;
+        transform: rotate(-7deg);
+        font-size: 32px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 23px;
+        padding: 16px;
+        border: 0;
+        border-radius: 14px;
+        cursor: pointer;
+        color: white;
+        background: linear-gradient(100deg, #f7659c, #ae8af5);
+        box-shadow: 0 6px 0 #d9add5, 0 12px 25px #ed83b32b;
+        font: 800 12px 'DM Sans', sans-serif;
+        letter-spacing: 1px;
+        transition: transform .2s, box-shadow .2s;
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 9px 0 #d9add5, 0 15px 28px #ed83b344;
+      }
+      button:active { transform: translateY(2px); }
+
+      .note {
+        margin-top: 17px;
+        text-align: center;
+        color: #ad8da4;
+        font-size: 10px;
+      }
+
+      .progress-track {
+        height: 11px;
+        padding: 2px;
+        margin: 26px 0 12px;
+        overflow: hidden;
+        border-radius: 99px;
+        background: #f4dfeb;
+      }
+
+      .progress-bar {
+        width: 0;
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, #ff83ad, #b6a0f8, #9de1c0);
+        transition: width 1.8s linear;
+      }
+
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        color: #b65a8a;
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .status {
+        min-height: 23px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .success-icon {
+        display: grid;
+        place-items: center;
+        width: 58px;
+        height: 58px;
+        margin: 21px 0 14px;
+        border-radius: 19px;
+        background: #dcf7e8;
+        color: #3c9167;
+        font-size: 28px;
+        transform: rotate(5deg);
+      }
+
+      .details {
+        margin-top: 23px;
+        border-top: 1px dashed #edc9df;
+      }
+
+      .detail {
+        display: grid;
+        grid-template-columns: 66px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 16px 0;
+        border-bottom: 1px dashed #edc9df;
+      }
+
+      .label {
+        padding-top: 3px;
+        color: #b17b9b;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+      }
+
+      .value {
+        color: #57344e;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+      }
+
+      .footer {
+        margin-top: 23px;
+        padding: 16px;
+        border-radius: 14px;
+        background: linear-gradient(100deg, #fff0f6, #f0eaff);
+        color: #a34378;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1.8;
+      }
+
+      .confetti {
+        position: fixed;
+        top: -15px;
+        width: 8px;
+        height: 12px;
+        border-radius: 3px;
+        pointer-events: none;
+        z-index: 10;
+        animation: fall 2s ease-in forwards;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh) rotate(650deg);
+          opacity: .15;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: .01ms !important;
+          transition-duration: .01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="sparkle s1">✦</div>
+    <div class="sparkle s2">✧</div>
+    <div class="sparkle s3">✷</div>
+    <div class="sparkle s4">✦</div>
+
+    <main class="window">
+      <div class="topbar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        VERY IMPORTANT UPDATE
+        <span class="filename">Birthday.exe</span>
+      </div>
+
+      <section class="content" id="intro">
+        <span class="eyebrow">NEW VERSION DETECTED</span>
+        <div class="ribbon">🎀</div>
+
+        <h1>BIRTHDAY<br /><span class="accent">UPDATE AVAILABLE.</span></h1>
+
+        <p class="subtitle">
+          An entirely unnecessary update has arrived.<br />
+          Installing it is the correct thing to do.
+        </p>
+
+        <button onclick="installUpdate()">INSTALL UPDATE &nbsp; ↗</button>
+
+        <div class="note">100% cute. 0% useful. Probably important.</div>
+      </section>
+
+      <section class="content hidden" id="loading" aria-live="polite">
+        <span class="eyebrow">PLEASE HOLD</span>
+
+        <h1>Making things<br /><span class="accent">official-ish...</span></h1>
+
+        <p class="status" id="status">
+          Adding a little sparkle to the situation.
+        </p>
+
+        <div
+          class="progress-track"
+          id="progressTrack"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-label">
+          <span>PLEASE DO NOT PANIC</span>
+          <span id="percentage">0%</span>
+        </div>
+      </section>
+
+      <section class="content hidden" id="result" aria-live="polite">
+        <span class="eyebrow">✓ UPDATE SUCCESSFUL</span>
+
+        <div class="success-icon">✿</div>
+
+        <h1>Birthday<span class="accent">.exe</span></h1>
+
+        <p class="subtitle">Your presence has been automatically requested.</p>
+
+        <div class="details">
+          <div class="detail">
+            <span class="label">DATE</span>
+            <span class="value">26 October 2026</span>
+          </div>
+
+          <div class="detail">
+            <span class="label">TIME</span>
+            <span class="value">4:00 pm</span>
+          </div>
+
+          <div class="detail">
+            <span class="label">VENUE</span>
+            <span class="value">Bistro Cafe</span>
+          </div>
+        </div>
+
+        <div class="footer">
+          No further action required.<br />
+          Just show up.
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function installUpdate() {
+        const intro = document.getElementById('intro');
+        const loading = document.getElementById('loading');
+        const result = document.getElementById('result');
+        const bar = document.getElementById('progressBar');
+        const percentage = document.getElementById('percentage');
+        const status = document.getElementById('status');
+        const track = document.getElementById('progressTrack');
+
+        intro.classList.add('hidden');
+        loading.classList.remove('hidden');
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            bar.style.width = '100%';
+          });
+        });
+
+        let progress = 0;
+
+        const timer = setInterval(() => {
+          progress = Math.min(progress + 5, 100);
+          percentage.textContent = progress + '%';
+          track.setAttribute('aria-valuenow', progress);
+
+          if (progress >= 35) {
+            status.textContent = 'Applying highly necessary sparkle...';
+          }
+
+          if (progress >= 70) {
+            status.textContent = 'Pretending this needed a software update...';
+          }
+
+          if (progress >= 100) {
+            clearInterval(timer);
+            status.textContent = "Okay, we're done here.";
+
+            setTimeout(() => {
+              loading.classList.add('hidden');
+              result.classList.remove('hidden');
+              celebrate();
+            }, 350);
+          }
+        }, 80);
+      }
+
+      function celebrate() {
+        const colors = [
+          '#ff77a8', '#b8a7ff', '#ffe9a8',
+          '#b8f0d5', '#ec4f8c'
+        ];
+
+        for (let i = 0; i < 34; i++) {
+          const piece = document.createElement('span');
+          piece.className = 'confetti';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.background = colors[i % colors.length];
+          piece.style.animationDelay = Math.random() * .45 + 's';
+
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 2500);
+        }
+      }
+    </script>
+  </body>
+</html>
